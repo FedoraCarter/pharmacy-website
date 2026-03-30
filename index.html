@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FADOJOY PHARMACY LTD - Your One Stop Shop For All Your Needs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/3142/3142084.png">
+</head>
+
+<body class="light-mode">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="theme-toggle-btn">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <div class="logo-text">
+                    <h1>FADOJOY <span>PHARMACY</span></h1>
+                    <p class="motto">Your One Stop Shop For All Your Needs</p>
+                </div>
+            </div>
+
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#drugs"><i class="fas fa-pills"></i> Drugs</a></li>
+                    <li><a href="#appointments"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+                    <li><a href="#reservations"><i class="fas fa-clipboard-list"></i> Reservations</a></li>
+                    <li><a href="#reviews"><i class="fas fa-star"></i> Reviews</a></li>
+                    <li>
+                        <a href="#" class="cart-icon" onclick="openCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Your Health, Our Priority</h2>
+            <p class="hero-motto">Your One Stop Shop For All Your Healthcare Needs</p>
+            <p>FADOJOY PHARMACY LTD provides quality pharmaceutical care with a personal touch. Order medications, book appointments, and get expert advice from our licensed pharmacists.</p>
+            <div class="hero-buttons">
+                <button class="cta-button" onclick="scrollToDrugs()">Shop Medications</button>
+                <button class="cta-button secondary" onclick="openAppointmentModal()">Book Appointment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Categories -->
+        <section id="categories">
+            <h2 class="section-title">Shop By Category</h2>
+            <div class="categories" id="categories-container">
+                <!-- Categories will be loaded from data.js -->
+            </div>
+        </section>
+
+        <!-- Drugs Section -->
+        <section id="drugs">
+            <h2 class="section-title">Our Medications</h2>
+            <div class="filter-controls">
+                <input type="text" id="search-drugs" placeholder="Search medications..." class="search-input">
+                <select id="sort-drugs" class="sort-select">
+                    <option value="name">Sort by Name</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="category">Sort by Category</option>
+                </select>
+            </div>
+            <div class="drugs-container" id="drugs-container">
+                <!-- Drugs will be loaded from data.js -->
+            </div>
+        </section>
+
+        <!-- Pharmacy Info -->
+        <section id="pharmacy-info">
+            <h2 class="section-title">Pharmacy Information</h2>
+            <div class="pharmacy-info">
+                <div class="info-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
+                    <p><strong>Address:</strong> Zulahatu Plaza, Gado Nasko Road Kubwa, Abuja</p>
+                    <p><strong>Phone:</strong> 0803 456 7890, 0902 123 4567</p>
+                    <p><strong>Email:</strong> info@fadojoypharmacy.com</p>
+                    <p><strong>Emergency:</strong> 0700 FADOJOY (0700 323 6569)</p>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-clock"></i> Opening Hours</h3>
+                    <p><strong>Monday - Saturday:</strong> 8:00 AM - 9:30 PM</p>
+                    <p><strong>Sunday:</strong> 10:00 AM - 9:00 PM</p>
+                    <p><strong>Emergency Services:</strong> 24/7 on call</p>
+                    <p><strong>Public Holidays:</strong> 10:00 AM - 6:00 PM</p>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-shipping-fast"></i> Delivery & Pickup</h3>
+                    <p>We offer both delivery and in-store pickup options.</p>
+                    <p><strong>Delivery Fee:</strong> ₦500 within Kubwa, ₦800 outside Kubwa</p>
+                    <p><strong>Free Delivery:</strong> For orders above ₦10,000</p>
+                    <p><strong>Express Delivery:</strong> 1-hour delivery available (₦1,500)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointments Section -->
+        <section id="appointments">
+            <h2 class="section-title">Book Appointment</h2>
+            <div class="appointment-container">
+                <div class="appointment-info">
+                    <h3><i class="fas fa-user-md"></i> Pharmacist Consultation</h3>
+                    <p>Schedule a one-on-one consultation with our licensed pharmacists for:</p>
+                    <ul>
+                        <li>Medication review and counseling</li>
+                        <li>Chronic disease management</li>
+                        <li>Vaccination advice</li>
+                        <li>Health screenings</li>
+                        <li>Prescription management</li>
+                    </ul>
+                    <p><strong>Consultation Fee:</strong> ₦1,500 (Free with prescription)</p>
+                </div>
+                <div class="appointment-form-card">
+                    <h3>Book Your Appointment</h3>
+                    <form id="appointment-form">
+                        <div class="form-group">
+                            <label for="patient-name">Full Name *</label>
+                            <input type="text" id="patient-name" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patient-phone">Phone Number *</label>
+                            <input type="tel" id="patient-phone" placeholder="0803 456 7890" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patient-email">Email Address</label>
+                            <input type="email" id="patient-email" placeholder="your@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointment-date">Preferred Date *</label>
+                            <input type="date" id="appointment-date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointment-time">Preferred Time *</label>
+                            <select id="appointment-time" required>
+                                <option value="">Select a time</option>
+                                <!-- Times will be populated by JavaScript -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointment-type">Appointment Type *</label>
+                            <select id="appointment-type" required>
+                                <option value="">Select type</option>
+                                <option value="consultation">General Consultation</option>
+                                <option value="prescription">Prescription Review</option>
+                                <option value="vaccination">Vaccination Advice</option>
+                                <option value="screening">Health Screening</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointment-reason">Reason for Appointment *</label>
+                            <textarea id="appointment-reason" rows="3" placeholder="Briefly describe why you need to see the pharmacist" required></textarea>
+                        </div>
+
+                        <button type="submit" class="cta-button">Book Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservations Section -->
+        <section id="reservations">
+            <h2 class="section-title">Drug Reservations</h2>
+            <div class="reservation-container">
+                <div class="reservation-info">
+                    <h3><i class="fas fa-box"></i> Reserve Medications</h3>
+                    <p>Reserve your medications in advance to ensure availability and avoid waiting time.</p>
+                    <ul>
+                        <li>Reserve prescription medications</li>
+                        <li>Reserve over-the-counter drugs</li>
+                        <li>Special orders for rare medications</li>
+                        <li>Bulk purchase reservations</li>
+                    </ul>
+                    <p><strong>Reservation Fee:</strong> ₦500 (deductible from purchase)</p>
+                    <p><strong>Holding Period:</strong> 48 hours</p>
+                </div>
+                <div class="reservation-form-card">
+                    <h3>Make a Reservation</h3>
+                    <form id="reservation-form">
+                        <div class="form-group">
+                            <label for="reservation-name">Full Name *</label>
+                            <input type="text" id="reservation-name" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation-phone">Phone Number *</label>
+                            <input type="tel" id="reservation-phone" placeholder="0803 456 7890" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation-drug">Drug to Reserve *</label>
+                            <select id="reservation-drug" required>
+                                <option value="">Select drug</option>
+                                <!-- Drugs will be populated by JavaScript -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation-quantity">Quantity *</label>
+                            <input type="number" id="reservation-quantity" min="1" max="100" value="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation-pickup-date">Pickup Date *</label>
+                            <input type="date" id="reservation-pickup-date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation-pickup-time">Pickup Time *</label>
+                            <select id="reservation-pickup-time" required>
+                                <option value="">Select time</option>
+                                <!-- Times will be populated by JavaScript -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation-method">Pickup Method *</label>
+                            <select id="reservation-method" required>
+                                <option value="pickup">In-Store Pickup</option>
+                                <option value="delivery">Home Delivery</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="cta-button">Reserve Now</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="reviews-container" id="reviews-container">
+                <!-- Reviews will be loaded from data.js -->
+            </div>
+
+            <div class="add-review-form">
+                <h3>Leave a Review</h3>
+                <form id="review-form">
+                    <div class="form-group">
+                        <label for="reviewer-name">Your Name *</label>
+                        <input type="text" id="reviewer-name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviewer-email">Email Address</label>
+                        <input type="email" id="reviewer-email" placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rating *</label>
+                        <div class="stars" id="rating-stars">
+                            <span class="star" data-rating="1"><i class="far fa-star"></i></span>
+                            <span class="star" data-rating="2"><i class="far fa-star"></i></span>
+                            <span class="star" data-rating="3"><i class="far fa-star"></i></span>
+                            <span class="star" data-rating="4"><i class="far fa-star"></i></span>
+                            <span class="star" data-rating="5"><i class="fas fa-star"></i></span>
+                        </div>
+                        <input type="hidden" id="rating" value="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="review-text">Your Review *</label>
+                        <textarea id="review-text" rows="4" placeholder="Tell us about your experience..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="review-consent" required>
+                            I agree to share my review publicly on FADOJOY PHARMACY website
+                        </label>
+                    </div>
+
+                    <button type="submit" class="cta-button">Submit Review</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3><i class="fas fa-comments"></i> Get in Touch</h3>
+                    <p>Have questions? We're here to help!</p>
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>0803 456 7890</p>
+                            <p>0902 123 4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>info@fadojoypharmacy.com</p>
+                            <p>support@fadojoypharmacy.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>Zulahatu Plaza, Gado Nasko Road</p>
+                            <p>Kubwa, Abuja, Nigeria</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-card">
+                    <h3>Send Message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name *</label>
+                            <input type="text" id="contact-name" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email">Email Address *</label>
+                            <input type="email" id="contact-email" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-subject">Subject *</label>
+                            <input type="text" id="contact-subject" placeholder="What is this regarding?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-message">Message *</label>
+                            <textarea id="contact-message" rows="4" placeholder="How can we help you?" required></textarea>
+                        </div>
+
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCart()">&times;</span>
+            <h2><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h2>
+
+            <div class="cart-items" id="cart-items">
+                <p id="empty-cart-message">Your cart is empty</p>
+            </div>
+
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Subtotal:</span>
+                    <span>₦<span id="cart-subtotal">0</span></span>
+                </div>
+                <div class="cart-total" id="delivery-fee-row">
+                    <span>Delivery Fee:</span>
+                    <span>₦<span id="delivery-fee">0</span></span>
+                </div>
+                <div class="cart-total grand-total">
+                    <span>Total:</span>
+                    <span>₦<span id="cart-total">0</span></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Delivery Option *</label>
+                <select id="delivery-option" required>
+                    <option value="pickup">Pickup in Store (Free)</option>
+                    <option value="delivery-standard">Standard Delivery (₦500, 2-4 hours)</option>
+                    <option value="delivery-express">Express Delivery (₦1,500, 1 hour)</option>
+                </select>
+            </div>
+
+            <div class="cart-actions">
+                <button class="checkout-btn secondary" onclick="closeCart()">Continue Shopping</button>
+                <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal" id="order-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+            <div class="order-success">
+                <i class="fas fa-check-circle"></i>
+                <h2>Order Confirmed!</h2>
+                <p id="order-message">Your order has been successfully placed.</p>
+                <div class="order-details" id="order-details">
+                    <!-- Order details will be inserted here -->
+                </div>
+                <button class="cta-button" onclick="closeOrderModal()">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-prescription-bottle-alt"></i>
+                    <div>
+                        <h3>FADOJOY PHARMACY LTD</h3>
+                        <p class="footer-motto">Your One Stop Shop For All Your Needs</p>
+                    </div>
+                </div>
+                <p>Your trusted healthcare partner in Kubwa, Abuja. We provide quality medications, professional consultations, and excellent customer service since 2010.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#drugs">Medications</a></li>
+                    <li><a href="#appointments">Book Appointment</a></li>
+                    <li><a href="#reservations">Drug Reservations</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul>
+                    <li>Prescription Dispensing</li>
+                    <li>Pharmacist Consultation</li>
+                    <li>Home Delivery Service</li>
+                    <li>Drug Reservations</li>
+                    <li>Health Screenings</li>
+                    <li>Vaccination Services</li>
+                    <li>Chronic Disease Management</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Payment Methods</h3>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-university"></i>
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <p>We accept all major payment methods including cash, cards, and bank transfers.</p>
+                <h4>Download Our App</h4>
+                <div class="app-download">
+                    <button class="app-btn">
+                        <i class="fab fa-google-play"></i>
+                        <div>
+                            <span>GET IT ON</span>
+                            <strong>Google Play</strong>
+                        </div>
+                    </button>
+                    <button class="app-btn">
+                        <i class="fab fa-app-store"></i>
+                        <div>
+                            <span>Download on the</span>
+                            <strong>App Store</strong>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 FADOJOY PHARMACY LTD. All rights reserved. | NAFDAC Registration No: A7-1234L | Pharmacy Council License: PCN/ABJ/2023/5678</p>
+            <p class="footer-links">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="#">Return Policy</a> |
+                <a href="#">FAQs</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
